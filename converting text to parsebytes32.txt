@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text to Parse32 Bytes</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        function textToParse32Bytes(text) {
+            // Encode the text into bytes using UTF-8 encoding
+            const utf8Encoder = new TextEncoder();
+            const bytes = utf8Encoder.encode(text);
+
+            // Convert each byte into its hexadecimal representation (parse32)
+            const parse32Bytes = Array.from(bytes, byte => byte.toString(16).padStart(2, '0'));
+
+            // Join all hexadecimal strings to form the Parse32 representation
+            const parse32String = parse32Bytes.join('');
+            
+            return parse32String;
+        }
+
+        // Example usage:
+        const plainText = "Hello, world!";
+        const parse32Representation = textToParse32Bytes(plainText);
+
+        // Display the Parse32 representation in the HTML document
+        const outputElement = document.getElementById('output');
+        outputElement.textContent = parse32Representation;
+    </script>
+</body>
+</html>
